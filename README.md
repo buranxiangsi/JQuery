@@ -16,3 +16,6 @@ jQuery('#xxx')//返回值并不是元素，而是一个api对象
 ```js
 jQuery('#xxx').find('.red')//查找#xxx里的.red元素
 ```
+```js
+jQuery('#xxx').end()//返回上一个元素
+```
