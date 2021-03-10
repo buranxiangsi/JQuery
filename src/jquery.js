@@ -1,5 +1,3 @@
-const { isEmptyObject } = require("jquery")
-
 window.jQuery = function (selectorOrArray) {
     let elements
     if (typeof selectorOrArray === 'string') {
