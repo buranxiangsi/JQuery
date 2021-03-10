@@ -1,3 +1,5 @@
+const { isEmptyObject } = require("jquery")
+
 window.jQuery = function (selectorOrArray) {
     let elements
     if (typeof selectorOrArray === 'string') {
@@ -9,7 +11,6 @@ window.jQuery = function (selectorOrArray) {
     }
     //api可以操作elements
     return {
-        oldApi: selectorOrArray.oldApi,
         find(selector) {
             let array = []
             for (let i = 0; i < elements.length; i++) {
@@ -20,15 +21,44 @@ window.jQuery = function (selectorOrArray) {
             array.oldApi = this  //this就是旧api
             return jQuery(array) //简化
         },
-        end() {
-            return this.oldApi //this就是新api
+        each(fn) {
+            for (let i = 0; i < elements.length; i++) {
+                fn.call(null, elements[i], i)
+            }
+            return this
         },
+        parent() {
+            const array = []
+            this.each((node) => {
+                if (array.indexOf(node.parentNode) === -1) {
+                    array.push(node.parentNode)
+                }
+            })
+            return jQuery(array)
+        },
+        children() {
+            const array = []
+            this.each((node) => {
+                array.push(...node.children)
+                // 等价于 array.push(node.children[0], node.children[1], node.children[2])
+            })
+            return jQuery(array)
+        },
+
+        print() {
+            console.log(elements)
+        },
+
         addClass(className) {
             //闭包：函数访问外部的变量
             for (let i = 0; i < elements.length; i++) {
                 elements[i].classList.add(className)
             }
             return this
+        },
+        oldApi: selectorOrArray.oldApi,
+        end() {
+            return this.oldApi //this就是新api
         },
 
     }
