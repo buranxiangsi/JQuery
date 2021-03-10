@@ -3,11 +3,11 @@ window.jQuery = function (selector) {
     //api可以操作elements
     const api = {
         //闭包：函数访问外部的变量
-        addClass(className) {
+        addClass: function (className) {
             for (let i = 0; i < elements.length; i++) {
                 elements[i].classList.add(className)
             }
-            return api
+            return this
         }
     }
     return api
