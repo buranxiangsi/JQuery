@@ -1,7 +1,7 @@
 window.jQuery = function (selector) {
     const elements = document.querySelectorAll(selector)
     //api可以操作elements
-    const api = {
+    return {
         //闭包：函数访问外部的变量
         addClass: function (className) {
             for (let i = 0; i < elements.length; i++) {
@@ -10,5 +10,5 @@ window.jQuery = function (selector) {
             return this
         }
     }
-    return api
+
 }
