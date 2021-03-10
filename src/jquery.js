@@ -1,5 +1,12 @@
-window.jQuery = function (selector) {
-    const elements = document.querySelectorAll(selector)
+window.jQuery = function (selectorOrArray) {
+    let elements
+    if (typeof selectorOrArray === 'string') {
+        elements = document.querySelectorAll(selectorOrArray)
+
+    } else if (selectorOrArray instanceof Array) {
+        elements = selectorOrArray
+
+    }
     //api可以操作elements
     return {
         //闭包：函数访问外部的变量
@@ -15,7 +22,8 @@ window.jQuery = function (selector) {
                 const elements2 = Array.from(elements[i].querySelectorAll(selector))
                 array = array.concat(elements2)
             }
-            return array
+            //const newApi = jQuery(array)
+            return jQuery(array)//简化
         }
     }
 }
