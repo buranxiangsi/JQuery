@@ -1,6 +1,3 @@
-const x = jQuery('.test')
-    .find('.child')
+const $div = $('<div>1</div')
+$div.appendTo()
 
-x.each((div) => console.log(div))
-
-x.children().print()
