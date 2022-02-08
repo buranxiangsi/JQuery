@@ -1,6 +1,6 @@
 # JQuery
 
-安装
+使用
 `parcel src/index.html`
 
 链式风格
