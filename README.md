@@ -1,7 +1,7 @@
 # JQuery
 
 安装
-parcel src/index.html
+`parcel src/index.html`
 
 链式风格
 - 也叫jQuery风格
